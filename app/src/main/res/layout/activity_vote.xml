@@ -1,9 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".vote">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textVIew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="95dp"
+        android:text="VOTING APP"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/sc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textVIew"
+
+        android:layout_centerInParent="true"
+        android:text="STUDENT COORDINATOR" />
+
+    1
+
+    <Button
+        android:id="@+id/pr"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sc"
+        android:layout_centerInParent="true"
+        android:text="PUBLIC RELATIONS" />
+
+    <Button
+        android:id="@+id/tech"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pr"
+        android:layout_centerInParent="true"
+        android:text="TECH HEAD" />
+
+    <Button
+        android:id="@+id/log"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tech"
+        android:layout_centerInParent="true"
+        android:text="LOGISTICS" />
+
+    <Button
+        android:id="@+id/finearts"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pr"
+        android:layout_centerInParent="true"
+        android:text="FINE ARTS" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="LET THE VOTING BEGIN!"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/technical"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/log"
+        android:layout_centerInParent="true"
+        android:text="TECHNICAL" />
+
+    <Button
+        android:id="@+id/result"
+        android:layout_width="223dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/technical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="81dp"
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="194dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginRight="89dp"
+        android:layout_marginBottom="182dp"
+        android:text="Result"
+        app:srcCompat="@drawable/result" />
+
+
+</RelativeLayout>

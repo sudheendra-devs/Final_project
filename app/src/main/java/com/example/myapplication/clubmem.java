@@ -1,12 +1,16 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,9 +21,9 @@ import com.synnapps.carouselview.ImageListener;
 
 public class clubmem extends AppCompatActivity {
     private ImageButton button;
-    private ImageButton report;
-    private int[] mImages= new int[]{
-             R.drawable.img3, R.drawable.img4, R.drawable.img5,R.drawable.img6,R.drawable.img7,R.drawable.img8
+    private ImageButton report, not, register, clubhead, vote1;
+    private int[] mImages = new int[]{
+            R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6, R.drawable.img7, R.drawable.img8
     };
 
 
@@ -43,7 +47,14 @@ public class clubmem extends AppCompatActivity {
                 Toast.makeText(clubmem.this, mImages[position], Toast.LENGTH_SHORT).show();
             }
         });
-        button =(ImageButton) findViewById(R.id.gal);
+        register = findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRegister();
+            }
+        });
+        button = (ImageButton) findViewById(R.id.gal);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,14 +68,103 @@ public class clubmem extends AppCompatActivity {
                 openReport();
             }
         });
+        not = findViewById(R.id.notifications);
+        not.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNotif();
+            }
+        });
+        clubhead = findViewById(R.id.club);
+        clubhead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCh();
+            }
+        });
+        vote1 = findViewById(R.id.vote2);
+        vote1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openVote();
+            }
+        });
     }
-        private void openGallery(){
-            Intent intent = new Intent(this,gallery2.class);
-                    startActivity(intent);
-        }
-    private void openReport(){
-        Intent intent = new Intent(this,reportPart.class);
+
+    private void openGallery() {
+        Intent intent = new Intent(this, gallery2.class);
         startActivity(intent);
+    }
+
+    private void openReport() {
+        Intent intent = new Intent(this, reportPart.class);
+        startActivity(intent);
+    }
+
+    private void openNotif() {
+        Intent intent = new Intent(this, view_notif.class);
+        startActivity(intent);
+    }
+
+    private void openRegister() {
+        Intent intent = new Intent(this, registerpart.class);
+        startActivity(intent);
+    }
+
+    public void openCh() {
+        Intent intent = new Intent(this, Clubheads.class);
+        startActivity(intent);
+    }
+
+    public void openVote() {
+        Intent intent = new Intent(this, vote.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_login) {
+
+            Intent intent = new Intent(clubmem.this, vote.class);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.action_aboutus) {
+            Intent intent = new Intent(this, Aboutus.class);
+            startActivity(intent);
+
+        } else if (item.getItemId() == R.id.action_logout) {
+
+
+            SharedPreferences sharedPreferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("remember", "false");
+            editor.apply();
+            AlertDialog.Builder builder = new AlertDialog.Builder(clubmem.this)
+                    .setTitle("FUSION TECH")
+                    .setMessage("Do you want to logout")
+                    .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(clubmem.this,LoginActivity.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

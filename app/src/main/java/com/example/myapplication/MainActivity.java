@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void openclubmem(){
-        Intent intent = new Intent(this, clubmem.class);
+        Intent intent = new Intent(this, Loginpart.class);
         startActivity(intent);
     }
 

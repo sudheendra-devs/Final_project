@@ -7,40 +7,12 @@
     android:background="@drawable/bg"
     tools:context=".reportPart">
 
-    <TextView
-        android:id="@+id/textView8"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recevent"
         android:layout_width="match_parent"
-        android:layout_height="31dp"
-        android:text="Event"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005" />
-
-    <Button
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:text="view"
-        app:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="378dp"
-        android:layout_height="489dp"
-        android:background="@color/white"
-        android:text="TextView"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

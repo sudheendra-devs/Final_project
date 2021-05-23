@@ -1,30 +1,25 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Member;
-
 public class report extends AppCompatActivity {
-    private Button button,clear;
-    private EditText et;
-    private TextView tv;
-    private static final  String EDIT = "ed1";
+  ImageButton button,clear,view;
+     EditText et;
+     TextView tv;
+
+    dbEvent db;
+
 
 
     @Override
@@ -32,19 +27,33 @@ public class report extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         et = findViewById(R.id.et1);
-        tv = findViewById(R.id.tv);
-        String Result =et.getText().toString();
-
-        button = (Button)findViewById(R.id.post);
+        tv = findViewById(R.id.headtv);
+        view = findViewById(R.id.viewevent);
+        db = new dbEvent(this);
+        button = findViewById(R.id.post);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Result =et.getText().toString();
-                tv.setText(Result);
-                Intent intent = new Intent(report.this,reportPart.class);
-                intent.putExtra("tv2",Result);
-                startActivity(intent);
 
+                addResult();
+                AlertDialog.Builder builder = new AlertDialog.Builder(report.this)
+                        .setTitle("FUSION TECH")
+                        .setMessage("Do you want to post this registraion on notification board")
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(report.this,notification.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 
             }
         });
@@ -52,24 +61,43 @@ public class report extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv.setText("");
+            deleteRecord();
 
             }
         });
-
-
-    }
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        if (outState != null){
-            String saved = outState.getString(EDIT);
-            tv.setText(saved);
+    view.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            viewevent();
         }
-        outState.putString(EDIT,tv.getText().toString().trim());
+    });
 
     }
-    public void save(View view){
-        tv.setText(et.getText().toString().trim());
+    public void startDB(View view){
+        new DbHelper(this);
     }
+    public void addResult(){
+        String l =et.getText().toString();
+        String n = tv.getText().toString();
+         db = new dbEvent(this);
+        String res = db.addRecord(n,l);
+        Toast.makeText(this, "success", Toast.LENGTH_LONG).show();
+
+    }
+public void viewevent(){
+        Intent intent = new Intent(this,reportPart.class);
+        startActivity(intent);
+}
+public void deleteRecord(){
+
+    boolean  delete= db.deleteRecord(tv.getText().toString());
+
+    if(delete == true){
+        Toast.makeText(report.this,"data deleted",Toast.LENGTH_LONG).show();
+    }
+    else{
+        Toast.makeText(report.this,"data couldnt be deleted",Toast.LENGTH_LONG).show();
+    }
+
+}
 }

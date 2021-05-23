@@ -13,8 +13,7 @@
         <item>Event 3</item>
         <item>Event 4</item>
     </string-array>
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_logout">Log out</string>
     <string name="menu_about_us">About Us</string>
     <string name="menu_sign_up">Sign up</string>
     <string name="title_activity_login">login</string>

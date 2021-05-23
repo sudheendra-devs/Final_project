@@ -7,13 +7,43 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".notify"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_image"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_image"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".reportPart"></activity>
+        <activity android:name=".fullimage"></activity>
+        <activity android:name=".start">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".result" />
+        <activity android:name=".adminvote" />
+        <activity android:name=".Loginpart" />
+        <activity android:name=".Aboutus" />
+        <activity
+            android:name=".Clubheads"
+            android:exported="true" />
+        <activity android:name=".registerpart" />
+        <activity
+            android:name=".registraion"
+            android:exported="true" />
+        <activity android:name=".sqlgallery" />
+        <activity
+            android:name=".sqlgalleryadmin"
+            android:exported="true" />
+        <activity
+            android:name=".view_notif"
+            android:exported="true" />
+        <activity
+            android:name=".notification"
+            android:exported="true" />
+        <activity android:name=".reportPart" />
         <activity
             android:name=".report"
             android:exported="true" />
@@ -23,8 +53,9 @@
         <activity
             android:name=".view"
             android:exported="true" />
-        <activity android:name=".Imagedisp" />
-        <activity android:name=".clubmemadmin" />
+        <activity
+            android:name=".clubmemadmin"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".galleryadmin" />
         <activity
             android:name=".gallery2"
@@ -34,13 +65,14 @@
             android:name=".clubmem"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".secondact" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity2" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".log" />
+        <activity android:name=".Fine" />
+        <activity android:name=".SC" />
+        <activity android:name=".pr" />
+        <activity android:name=".tech" />
     </application>
 
 </manifest>

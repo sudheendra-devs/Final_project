@@ -45,7 +45,7 @@ public class secondact extends AppCompatActivity {
     }
     public void openclubmem()
     {
-        Intent intent=new Intent(this,clubmemadmin.class);
+        Intent intent=new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
 

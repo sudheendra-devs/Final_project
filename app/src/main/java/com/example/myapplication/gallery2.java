@@ -26,27 +26,25 @@ import java.sql.Ref;
 
 
 public class gallery2 extends AppCompatActivity {
-    private  Spinner spinner;
+
     StorageReference storageReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery2);
-        spinner = (Spinner)findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapt = ArrayAdapter.createFromResource(this,R.array.spinner1, android.R.layout.simple_spinner_item);
-        adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapt);
+
         GridView gridView = (GridView)findViewById(R.id.gr);
 
         gridView.setAdapter(new ImageAdapter(this));
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),Imagedisp.class);
-                intent.putExtra("id",position);
-                startActivity(intent);
+                Intent i = new Intent(getApplicationContext(),fullimage.class);
+                i.putExtra("id",position);
+                startActivity(i);
             }
         });
+
 
     }
 }
